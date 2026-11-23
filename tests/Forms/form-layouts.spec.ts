@@ -43,4 +43,15 @@ test.describe('Submitting forms', () => {
     await usingBasicForm.getByRole('button', {name: 'Submit'}).click()
   })
 
+
+  test('Submitting form without labels', async ({page}) => {
+    
+    const usingNoLabels = page.locator('nb-card', {hasText: 'Form without labels'})
+
+    await usingNoLabels.getByPlaceholder('Recipients').fill('John Doe')
+    await usingNoLabels.getByPlaceholder('Subject').fill('monthly bill')
+    await usingNoLabels.getByPlaceholder('Message').fill('Please pay on time')
+    await usingNoLabels.getByRole('button', {name: 'Send'}).click()
+  })
+
 })

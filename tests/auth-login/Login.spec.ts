@@ -20,7 +20,7 @@ test.describe('log in page', () => {
                 const logInCard = page.locator('nb-login')
                 const emailInput = logInCard.locator('#input-email')
                 const paswordInput = logInCard.locator('#input-password')
-                const loginButton = logInCard.getByRole('button', {hasText: ' Log In '})
+                const loginButton = logInCard.getByRole('button', {name: ' Log In '})
 
 
         // Ensuring button is disabel

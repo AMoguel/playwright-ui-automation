@@ -19,7 +19,30 @@ test.describe('Request password flow', () => {
 
     })
 
-    test('')
+    test('Request password form submission ', async ({page}) => {
+
+         //Assertion that button is disabled until email is entered 
+        await expect(requestPasswordButton).toBeDisabled()
+
+        //possitive form submission
+        await emailInput.fill('test@test.com')
+        //asserting that button is enabled after email field is filled
+        await expect(requestPasswordButton).toBeEnabled()
+        await requestPasswordButton.click()
+        
+    })
+
+    test('Error validation', async ({page}) => {
+
+        //Assertion to validate error when leaving field empty
+        await emailInput.click()
+        await emailInput.blur()
+        await expect(requestPasswordForm.getByText(' Email is required! '))
+
+        //Assertion to validate error when incorrect email format entered 
+        await emailInput.fill('asdfad')
+        await expect(requestPasswordForm.getByText(' Email should be the real one! '))
+    })
 
 
 

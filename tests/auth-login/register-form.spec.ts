@@ -70,13 +70,6 @@ test.describe('registration flow', () => {
         await pw2input.blur()
         await expect(regForm.locator('.caption.status-danger', {hasText: ' Password confirmation is required!  '})).toBeVisible()
 
-       
-
-
-
-
-
-
 
     })
 

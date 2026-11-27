@@ -1,7 +1,7 @@
 import { expect, Locator, test } from '@playwright/test'
 
 
-test.beforeEach(async ({page}) => {
+test.beforeEach(async ({ page }) => {
     await page.goto('https://playground.bondaracademy.com/auth/request-password')
 })
 
@@ -12,16 +12,16 @@ test.describe('Request password flow', () => {
     let requestPasswordButton: Locator
 
 
-    test.beforeEach(async ({page}) => {
+    test.beforeEach(async ({ page }) => {
         requestPasswordForm = page.locator('nb-request-password-page')
         emailInput = page.getByRole('textbox', { name: 'Email address:' })
         requestPasswordButton = page.getByRole('button', { name: ' Request Password ' })
 
     })
 
-    test('Request password form submission ', async ({page}) => {
+    test('Request password form submission ', async ({ page }) => {
 
-         //Assertion that button is disabled until email is entered 
+        //Assertion that button is disabled until email is entered 
         await expect(requestPasswordButton).toBeDisabled()
 
         //possitive form submission
@@ -29,10 +29,10 @@ test.describe('Request password flow', () => {
         //asserting that button is enabled after email field is filled
         await expect(requestPasswordButton).toBeEnabled()
         await requestPasswordButton.click()
-        
+
     })
 
-    test('Error validation', async ({page}) => {
+    test('Error validation', async ({ page }) => {
 
         //Assertion to validate error when leaving field empty
         await emailInput.click()
